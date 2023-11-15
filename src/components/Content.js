@@ -33,7 +33,7 @@ const ContentItem = styled.div`
   padding: 1vh 2vw; /* 상하 1vh, 좌우 2vw 패딩 추가 */
   display: flex;
   align-items: center;
-  flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
+  flex-direction: column; /* 세로 방향으로 아이템을 배치 */
   position: relative; /* 가상 요소의 위치를 설정하기 위해 상대 위치 지정 */
 `;
 
