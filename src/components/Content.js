@@ -25,10 +25,12 @@ const ContentWrapper = styled.div`
 
 const Content = (props) => {
   const dataList = props.data.map((item, index) => (
-    <ContentItem key={item.id} index={index} title={item.title} />
+    <ContentItem key={item.id} index={index} title={item.title} circleColor="rgba(0, 0, 0, 0)" lineColor="rgba(0, 0, 0, 0)"/>
   ));
 
-  return <ContentWrapper>{dataList}</ContentWrapper>;
+  return (
+        <ContentWrapper>{dataList}</ContentWrapper>
+  );
 };
 
 export default Content;

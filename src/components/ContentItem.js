@@ -42,15 +42,41 @@ const IdTitle = styled.span`
 
 const IdNumber = styled(IdTitle)`
   position: absolute;
-  top: 0;
-  left: 0;
   font-size: 1.5rem;
-  margin: 0.5vw;
 `;
 
-const ContentItem = ({ index, title }) => (
+const Circle = styled.div`
+  position: absolute;
+  width: calc(1em / 0.7);
+  height: calc(1em / 0.7);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border: 0.5vw solid ${props => props.circleColor || 'rgba(0, 0, 0, 0)'}; 
+  top: 0;
+  left: 0;
+`;
+
+const DiagonalLine = styled.div`
+  width: 5px;
+  height: 50px;
+  position: absolute;
+  background-color: ${props => props.lineColor || 'rgba(0, 0, 0, 0)'};
+  transform: rotate(45deg);
+  border-radius: 0.5vw;
+`;
+
+
+const ContentItem = ({ index, title, circleColor, lineColor }) => (
   <ContentItemWrapper>
+    <Circle circleColor={circleColor}>
     <IdNumber>{index + 1}.</IdNumber>
+    <DiagonalLine lineColor={lineColor}></DiagonalLine>
+    </Circle>
+    
+    
     <TextFieldWrapper>
       <IdTitle>{title}</IdTitle>
       <Textfield type="text" />
