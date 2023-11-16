@@ -27,13 +27,13 @@ const Text = styled.span`
 
 const PlaceholderText = styled.span`
   color: #FF0000;
-  height: 3.5vh;
-  width: 3.5vw;
+  height: 3vh;
+  width: 4vw;
   font-size: 1.2em;
   font-weight: bold;
   border-radius: 0.5vw;
   border: 0.2vw solid #D4D8D9;
-  padding: 0.2vh 0.5vw; /* 텍스트와 테두리 사이 간격 추가 */
+  padding:0.5vw; /* 텍스트와 테두리 사이 간격 추가 */
   text-align: center;
   margin-left: 1vw;
   margin-right: 1vw;
