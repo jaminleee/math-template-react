@@ -4,6 +4,7 @@ import Title from './Title';
 import Description from './Description';
 import Content from './Content';
 import Button from './ui/Button';
+import Draggable from 'react-draggable';
 
 const StyledTemplate = styled.div`
   background-color: #FFEBF1;
@@ -14,6 +15,16 @@ const StyledTemplate = styled.div`
 const ContentList = styled.div`
   padding: 3vh 20vw;
 `;
+
+const StyledDraggableDiv = styled.div`
+  background-color: skyblue;
+  cursor: grab;
+  padding: 10px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 999;
+`;
+
 
 const Template = () => {
   const [state] = useState({
@@ -29,6 +40,9 @@ const Template = () => {
 
   return (
     <StyledTemplate>
+      <Draggable>
+        <StyledDraggableDiv>움직이지롱</StyledDraggableDiv>
+      </Draggable>
       <Title title={state.title.title}></Title>
       <Description></Description>
       <ContentList><Content data={state.contents}></Content></ContentList>

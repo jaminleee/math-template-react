@@ -37,12 +37,12 @@ const Textfield = styled.input`
 
 const IdTitle = styled.span`
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 `;
 
 const IdNumber = styled(IdTitle)`
   position: absolute;
-  font-size: 1.5rem;
+  font-size: 1rem;
 `;
 
 const Circle = styled.div`
