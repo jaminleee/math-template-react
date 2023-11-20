@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const ContentItemWrapper = styled.div`
   background-color: #F1F9FC;
   text-align: start;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
+  margin: 3vh 10vw;
   border-radius: 0.5vw;
   padding: 1vh 2vw;
   display: flex;
@@ -23,8 +20,7 @@ const TextFieldWrapper = styled.div`
 `;
 
 const Textfield = styled.input`
-  margin-left: 1vw;
-  margin-right: 1vw;
+  margin: 0 1vw;
   height: 3vh;
   width: 4vw;
   border-radius: 0.5vw;
@@ -47,8 +43,8 @@ const IdNumber = styled(IdTitle)`
 
 const Circle = styled.div`
   position: absolute;
-  width: calc(1em / 0.7);
-  height: calc(1em / 0.7);
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -68,26 +64,66 @@ const DiagonalLine = styled.div`
   border-radius: 0.5vw;
 `;
 
+const ContentItem = ({ index, title, circleColor, lineColor, onInputChange }) => {
+  const [textFieldValues, setTextFieldValues] = useState(['', '', '']);
 
-const ContentItem = ({ index, title, circleColor, lineColor }) => (
-  <ContentItemWrapper>
-    <Circle circleColor={circleColor}>
-    <IdNumber>{index + 1}.</IdNumber>
-    <DiagonalLine lineColor={lineColor}></DiagonalLine>
-    </Circle>
-    
-    
-    <TextFieldWrapper>
-      <IdTitle>{title}</IdTitle>
-      <Textfield type="text" />
-      <IdTitle>+</IdTitle>
-      <Textfield type="text" />
-    </TextFieldWrapper>
-    <TextFieldWrapper>
-      <IdTitle>=</IdTitle>
-      <Textfield type="text" />
-    </TextFieldWrapper>
-  </ContentItemWrapper>
-);
+  // 텍스트 필드 값이 변경될 때 호출되는 함수
+  const handleInputChange = () => {
+    // 부모 컴포넌트로 입력값 전달
+    onInputChange({
+      index,
+      values: {
+        textField1Value: textFieldValues[0],
+        textField2Value: textFieldValues[1],
+        textField3Value: textFieldValues[2],
+      },
+    });
+  };
+
+  // 텍스트 필드 값이 변경될 때 호출되는 함수 (재사용 가능한 부분)
+  const handleTextFieldChange = (e, index) => {
+    const value = e.target.value;
+    console.log(`TextField ${index + 1}:`, value);
+    // 해당 텍스트 필드의 값만 업데이트
+    setTextFieldValues(prevValues => {
+      const newValues = [...prevValues];
+      newValues[index] = value;
+      return newValues;
+    });
+    handleInputChange();
+  };
+
+  return (
+    <ContentItemWrapper>
+      <Circle circleColor={circleColor}>
+        <IdNumber>{index + 1}.</IdNumber>
+        <DiagonalLine lineColor={lineColor} />
+      </Circle>
+
+      <TextFieldWrapper>
+        <IdTitle>{title}</IdTitle>
+        {[0, 1].map(i => (
+          <React.Fragment key={i}>
+            <Textfield
+              type="text"
+              value={textFieldValues[i]}
+              onChange={e => handleTextFieldChange(e, i)}
+            />
+            {i === 0 && <IdTitle>+</IdTitle>}
+          </React.Fragment>
+        ))}
+      </TextFieldWrapper>
+
+      <TextFieldWrapper>
+        <IdTitle>=</IdTitle>
+        <Textfield
+          type="text"
+          value={textFieldValues[2]}
+          onChange={e => handleTextFieldChange(e, 2)}
+        />
+      </TextFieldWrapper>
+    </ContentItemWrapper>
+  );
+};
 
 export default ContentItem;
