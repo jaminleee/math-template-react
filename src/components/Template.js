@@ -55,7 +55,21 @@ const Template = () => {
   
 
   const handleSubmission = () => {
-    // 각 Content의 답을 확인하고 채점 로직을 작성
+
+    // handleInputChange 함수 호출
+    state.contents.forEach((content, index) => {
+      handleInputChange({
+        index,
+        values: {
+          textField1Value: content.textField1Value,
+          textField2Value: content.textField2Value,
+          textField3Value: content.textField3Value,
+        },
+      });
+    });
+
+    
+    // 각 Content의 답을 확인하고 채점
     state.contents.forEach(content => {
       const textField1Value = content.textField1Value;
       const textField2Value = content.textField2Value;
@@ -83,7 +97,7 @@ const Template = () => {
   return (
     <StyledTemplate>
       <Draggable onDrag={handleDrag}>
-        <StyledDraggableDiv>움직이지롱</StyledDraggableDiv>
+        <StyledDraggableDiv>드레그드롭</StyledDraggableDiv>
       </Draggable>
       <Title title={state.title.title}></Title>
       <Description></Description>
