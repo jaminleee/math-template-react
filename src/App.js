@@ -10,8 +10,6 @@ class App extends Component{
         <Template></Template>
       </div>
     );
-
-    
   }
   
 }

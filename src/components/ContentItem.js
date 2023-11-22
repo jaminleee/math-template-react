@@ -34,34 +34,13 @@ const Textfield = styled.input`
 const IdTitle = styled.span`
   font-weight: bold;
   font-size: 1.5rem;
+  top: 1vh;
+  left: 1vw;
 `;
 
 const IdNumber = styled(IdTitle)`
   position: absolute;
   font-size: 1rem;
-`;
-
-const Circle = styled.div`
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  border: 0.5vw solid ${props => props.circleColor || 'rgba(0, 0, 0, 0)'}; 
-  top: 0;
-  left: 0;
-`;
-
-const DiagonalLine = styled.div`
-  width: 5px;
-  height: 50px;
-  position: absolute;
-  background-color: ${props => props.lineColor || 'rgba(0, 0, 0, 0)'};
-  transform: rotate(45deg);
-  border-radius: 0.5vw;
 `;
 
 const ContentItem = ({ index, title, circleColor, lineColor, onInputChange, isCorrect }) => {
@@ -95,11 +74,7 @@ const ContentItem = ({ index, title, circleColor, lineColor, onInputChange, isCo
 
   return (
     <ContentItemWrapper>
-      <Circle circleColor={isCorrect ? 'red' : circleColor}>
         <IdNumber>{index + 1}.</IdNumber>
-        <DiagonalLine lineColor={isCorrect ? 'red' : lineColor} />
-      </Circle>
-
       <TextFieldWrapper>
         <IdTitle>{title}</IdTitle>
         {[0, 1].map(i => (
