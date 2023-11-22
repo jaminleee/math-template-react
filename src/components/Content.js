@@ -9,8 +9,8 @@ const ContentWrapper = styled.div`
   border-top: 0.6vw solid #FFC6D7; /* 위에만 테두리 */
   border-left: 0.6vw solid #FFC6D7; /* 왼쪽에만 테두리 */
   border-right: 0.6vw solid #FFC6D7; /* 오른쪽에만 테두리 */
-  max-height: 70vh;
-  max-width: 60vw;
+  max-height: 71vh;
+  max-width: 70vw;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -26,7 +26,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Content = ({ data, onInputChange, isSubmitted  }) => {
+const Content = ({ data  }) => {
   return (
     <ContentWrapper>
       {data.map((item, index) => (
@@ -34,10 +34,6 @@ const Content = ({ data, onInputChange, isSubmitted  }) => {
           key={item.id}
           index={index}
           title={item.title}
-          circleColor={item.circleColor}
-          lineColor={item.lineColor}
-          onInputChange={onInputChange}
-          isCorrect={isSubmitted ? item.isCorrect : undefined}
         />
       ))}
       <Button onClick={() => alert('click')}>

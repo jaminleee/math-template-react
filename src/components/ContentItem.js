@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import img_correct from '../assets/img_correct.png'
+import img_notCorrect from '../assets/img_notCorrect.png'
 
 const ContentItemWrapper = styled.div`
   background-color: #F1F9FC;
@@ -11,6 +13,16 @@ const ContentItemWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
+`;
+
+const ImageWrapper = styled.div`
+background-image: url('${img_correct}');
+  background-size: cover;
+  width: 5rem; /* Set the width of the image */
+  height: 4.6rem; /* Set the height of the image */
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const TextFieldWrapper = styled.div`
@@ -34,16 +46,16 @@ const Textfield = styled.input`
 const IdTitle = styled.span`
   font-weight: bold;
   font-size: 1.5rem;
-  top: 1vh;
-  left: 1vw;
+  top: 30%;
+  left: 45%;
 `;
 
 const IdNumber = styled(IdTitle)`
-  position: absolute;
+  position: relative;
   font-size: 1rem;
 `;
 
-const ContentItem = ({ index, title, circleColor, lineColor, onInputChange, isCorrect }) => {
+const ContentItem = ({ index, title, onInputChange }) => {
   const [textFieldValues, setTextFieldValues] = useState(['', '', '']);
 
   // 텍스트 필드 값이 변경될 때 호출되는 함수
@@ -74,7 +86,9 @@ const ContentItem = ({ index, title, circleColor, lineColor, onInputChange, isCo
 
   return (
     <ContentItemWrapper>
+      <ImageWrapper>
         <IdNumber>{index + 1}.</IdNumber>
+      </ImageWrapper>
       <TextFieldWrapper>
         <IdTitle>{title}</IdTitle>
         {[0, 1].map(i => (
