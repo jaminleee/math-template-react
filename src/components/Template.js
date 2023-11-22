@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Title from './Title';
 import Description from './Description';
 import Content from './Content';
-import Button from './ui/Button';
 import Draggable from 'react-draggable';
 
 const StyledTemplate = styled.div`
@@ -13,7 +12,10 @@ const StyledTemplate = styled.div`
 `;
 
 const ContentList = styled.div`
-  padding: 3vh 20vw;
+  padding-top: 5vh; /* 위쪽 패딩 */
+  padding-bottom: 10vh; /* 아래쪽 패딩 */
+  padding-left: 20vw; /* 왼쪽 패딩 */
+  padding-right: 20vw; /* 오른쪽 패딩 */
 `;
 
 const StyledDraggableDiv = styled.div`
@@ -36,41 +38,25 @@ const Template = () => {
       { id: 4, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
       { id: 5, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
     ],
+    isSubmitted: false, // 제출 여부를 나타내는 상태 변수
   });
-
-
 
   const handleDrag = (e, data) => {
     console.log('Drag Coordinates:', { x: data.x, y: data.y });
   };
 
-    // ContentItem에서 호출되는 함수로 입력값을 받아옴
-    const handleInputChange = ({ index, values }) => {
-      setState((prevState) => {
-        const updatedContents = [...prevState.contents];
-        updatedContents[index] = { ...updatedContents[index], ...values };
-        return { ...prevState, contents: updatedContents };
-      });
-    };
-  
+  // ContentItem에서 호출되는 함수로 입력값을 받아옴
+  const handleInputChange = ({ index, values }) => {
+    setState((prevState) => {
+      const updatedContents = [...prevState.contents];
+      updatedContents[index] = { ...updatedContents[index], ...values };
+      return { ...prevState, contents: updatedContents };
+    });
+  };
 
   const handleSubmission = () => {
-
-    // handleInputChange 함수 호출
-    state.contents.forEach((content, index) => {
-      handleInputChange({
-        index,
-        values: {
-          textField1Value: content.textField1Value,
-          textField2Value: content.textField2Value,
-          textField3Value: content.textField3Value,
-        },
-      });
-    });
-
-    
     // 각 Content의 답을 확인하고 채점
-    state.contents.forEach(content => {
+    const updatedContents = state.contents.map(content => {
       const textField1Value = content.textField1Value;
       const textField2Value = content.textField2Value;
       const textField3Value = content.textField3Value;
@@ -79,20 +65,17 @@ const Template = () => {
       const isCorrect = (
         parseInt(textField1Value) === content.num1 &&
         parseInt(textField2Value) === content.num2 &&
-        parseInt(textField3Value) === content.num3
+        parseInt(textField3Value) === content.num3 
       );
 
-      console.log(`${content.id}==============================================`)
-      console.log(`${content.id}번: ${textField1Value},${textField2Value},${textField3Value}`)
-      console.log(`${content.id}번: ${content.num1},${content.num2},${content.num3}`)
-      console.log(`${isCorrect ? '정답' : '오답'}`);
-      console.log(`==============================================`)
+      console.log(`${content.id}: ${textField1Value}, ${textField2Value}, ${textField3Value}, ${isCorrect}`)
+
+      return { ...content, isCorrect };
     });
 
+    setState((prevState) => ({ ...prevState, contents: updatedContents, isSubmitted: true }));
     alert('제출?');
   };
-
-
 
   return (
     <StyledTemplate>
@@ -102,13 +85,12 @@ const Template = () => {
       <Title title={state.title.title}></Title>
       <Description></Description>
       <ContentList>
-        <Content data={state.contents} onInputChange={handleInputChange} />
+        <Content data={state.contents} onInputChange={handleInputChange} isSubmitted={state.isSubmitted} />
       </ContentList>
-      <Button onClick={handleSubmission}>
-        제출하기
-      </Button>
+      
     </StyledTemplate>
   );
-}
+};
 
 export default Template;
+

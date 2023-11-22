@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import ContentItem from './ContentItem';
+import Button from './ui/Button';
 
 const ContentWrapper = styled.div`
   background-color: white;
-  border-radius: 1vw;
-  border: 0.6vw solid #FFC6D7;
-  max-height: 60vh;
+  border-radius: 1vw 1vw 0 0;
+  border-top: 0.6vw solid #FFC6D7; /* 위에만 테두리 */
+  border-left: 0.6vw solid #FFC6D7; /* 왼쪽에만 테두리 */
+  border-right: 0.6vw solid #FFC6D7; /* 오른쪽에만 테두리 */
+  max-height: 70vh;
   max-width: 60vw;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -23,18 +26,24 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Content = (props) => {
-  const dataList = props.data.map((item, index) => (
-    <ContentItem 
-      key={item.id} 
-      index={index} 
-      title={item.title} 
-      onInputChange={props.onInputChange}
-    />
-  ));
-
+const Content = ({ data, onInputChange, isSubmitted  }) => {
   return (
-        <ContentWrapper>{dataList}</ContentWrapper>
+    <ContentWrapper>
+      {data.map((item, index) => (
+        <ContentItem
+          key={item.id}
+          index={index}
+          title={item.title}
+          circleColor={item.circleColor}
+          lineColor={item.lineColor}
+          onInputChange={onInputChange}
+          isCorrect={isSubmitted ? item.isCorrect : undefined}
+        />
+      ))}
+      <Button onClick={() => alert('click')}>
+      제출하기
+    </Button>
+    </ContentWrapper>
   );
 };
 

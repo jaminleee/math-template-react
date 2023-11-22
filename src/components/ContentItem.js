@@ -64,7 +64,7 @@ const DiagonalLine = styled.div`
   border-radius: 0.5vw;
 `;
 
-const ContentItem = ({ index, title, circleColor, lineColor, onInputChange }) => {
+const ContentItem = ({ index, title, circleColor, lineColor, onInputChange, isCorrect }) => {
   const [textFieldValues, setTextFieldValues] = useState(['', '', '']);
 
   // 텍스트 필드 값이 변경될 때 호출되는 함수
@@ -95,9 +95,9 @@ const ContentItem = ({ index, title, circleColor, lineColor, onInputChange }) =>
 
   return (
     <ContentItemWrapper>
-      <Circle circleColor={circleColor}>
+      <Circle circleColor={isCorrect ? 'red' : circleColor}>
         <IdNumber>{index + 1}.</IdNumber>
-        <DiagonalLine lineColor={lineColor} />
+        <DiagonalLine lineColor={isCorrect ? 'red' : lineColor} />
       </Circle>
 
       <TextFieldWrapper>

@@ -10,7 +10,10 @@ class App extends Component{
         <Template></Template>
       </div>
     );
+
+    
   }
+  
 }
 
 export default App;
