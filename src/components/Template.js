@@ -47,9 +47,6 @@ const Template = () => {
 
   return (
     <StyledTemplate>
-      <Draggable onDrag={handleDrag}>
-        <StyledDraggableDiv>드레그드롭</StyledDraggableDiv>
-      </Draggable>
       <Title title={state.title.title}></Title>
       <Description></Description>
       <ContentList>
