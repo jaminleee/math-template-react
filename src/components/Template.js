@@ -28,17 +28,19 @@ const Template = () => {
       { id: 4, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
       { id: 5, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
     ],
-    extToken: null,
+    //extToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ5OTI1LCJqdGkiOiIxY2MzNzI5YWQ3MjM0MDE2OGFjODI5OWNjMjE5MjA2MSIsInVzZXJfaWQiOjMwMTgsInByb2dyZXNzX3VybCI6Imh0dHBzOi8vYXBpLWVzcC1wcm94eS5lbGljZS5pby9kZWZhdWx0L3Byb2dyZXNzL2V4dGVybmFsP3Rva2VuPWV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUoxYVdRaU9tNTFiR3dzSW5WelpYSmZhV1FpT2pFek5UYzFOamc0TENKdmNtZGhibWw2WVhScGIyNWZhV1FpT2pnM05Td2lZMjkxY25ObFgybGtJam80TVRFeE5Dd2liR1ZqZEhWeVpWOXdZV2RsWDJsa0lqbzNNall5TVRnNGZRLlVSSjU5dXV4YTN6d0pwaERYYkh6ZWFnOER2bGxwS2xXaDVaOTZZLW9jelkifQ.n7mYyElBsjHRQ0WX-DFSBZdJfRz6Qp7FUpamLD7FPnE",
   });
 
-  const location = useLocation();
-  const extTokenFromQuery = new URLSearchParams(location.search).get('extToken');
+  //const location = useLocation();
+  //const extTokenFromQuery = new URLSearchParams(location.search).get('extToken');
+  //const extTokenFromQuery = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNTQ5OTI1LCJqdGkiOiIxY2MzNzI5YWQ3MjM0MDE2OGFjODI5OWNjMjE5MjA2MSIsInVzZXJfaWQiOjMwMTgsInByb2dyZXNzX3VybCI6Imh0dHBzOi8vYXBpLWVzcC1wcm94eS5lbGljZS5pby9kZWZhdWx0L3Byb2dyZXNzL2V4dGVybmFsP3Rva2VuPWV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUoxYVdRaU9tNTFiR3dzSW5WelpYSmZhV1FpT2pFek5UYzFOamc0TENKdmNtZGhibWw2WVhScGIyNWZhV1FpT2pnM05Td2lZMjkxY25ObFgybGtJam80TVRFeE5Dd2liR1ZqZEhWeVpWOXdZV2RsWDJsa0lqbzNNall5TVRnNGZRLlVSSjU5dXV4YTN6d0pwaERYYkh6ZWFnOER2bGxwS2xXaDVaOTZZLW9jelkifQ.n7mYyElBsjHRQ0WX-DFSBZdJfRz6Qp7FUpamLD7FPnE"
 
-  useEffect(() => {
-    if (extTokenFromQuery) {
-      setState((prev) => ({ ...prev, extToken: extTokenFromQuery }));
-    }
-  }, [extTokenFromQuery]);
+
+  // useEffect(() => {
+  //   if (extTokenFromQuery) {
+  //     setState((prev) => ({ ...prev, extToken: extTokenFromQuery }));
+  //   }
+  // }, [extTokenFromQuery]);
 
   return (
     <StyledTemplate>

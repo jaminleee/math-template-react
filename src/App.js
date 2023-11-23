@@ -1,16 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Component } from 'react';
 import Template from './components/Template';
 
-const App = () => {
-  return (
-    <Router>
+
+class App extends Component{
+  render(){
+    return (
       <div className="App">
-        <Routes path="/" component={Template} />
+        <Template></Template>
       </div>
-    </Router>
-  );
+    );
+  }
+  
 }
 
 export default App;
