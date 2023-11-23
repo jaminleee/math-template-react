@@ -7,20 +7,19 @@ import axios from 'axios';
 const ContentWrapper = styled.div`
   background-color: white;
   border-radius: 1vw 1vw 0 0;
-  border-top: 0.6vw solid #FFC6D7; /* 위에만 테두리 */
-  border-left: 0.6vw solid #FFC6D7; /* 왼쪽에만 테두리 */
-  border-right: 0.6vw solid #FFC6D7; /* 오른쪽에만 테두리 */
+  border-top: 0.6vw solid #FFC6D7; 
+  border-left: 0.6vw solid #FFC6D7; 
+  border-right: 0.6vw solid #FFC6D7;
   max-height: 71vh;
   max-width: 70vw;
   overflow-y: scroll;
   overflow-x: hidden;
 
-  /* 스크롤바 전체 스타일 */
+  
   &::-webkit-scrollbar {
     width: 0.5vw;
   }
 
-  /* 스크롤바 핸들(바) 스타일 */
   &::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 1vw;
@@ -32,7 +31,7 @@ const Content = ({ data, extToken }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
 
-  // 토큰 디코드
+  // 토큰 decpode
   // const decodeToken = (token) => {
   //   try {
   //     const decodedToken = JSON.parse(atob(token.split('.')[1]));
@@ -76,7 +75,7 @@ const Content = ({ data, extToken }) => {
         alert('다시 풀겠습니까?');
       }
     } catch (error) {
-      console.error('Error during submit:', error);
+      console.error('제출 에러', error);
     }
   };
 

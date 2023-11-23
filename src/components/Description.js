@@ -31,7 +31,7 @@ const PlaceholderText = styled.span`
   font-weight: bold;
   border-radius: 0.5vw;
   border: 0.2vw solid #D4D8D9;
-  padding:1vh 1.5vw; /* 텍스트와 테두리 사이 간격 추가 */
+  padding:1vh 1.5vw;
   text-align: center;
   margin-left: 1vw;
   margin-right: 1vw;
