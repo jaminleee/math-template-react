@@ -26,13 +26,22 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Content = ({ data  }) => {
+const Content = ({ data }) => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
  
   const handleSubmit = () => {
-    setIsSubmitted(true);
-    alert('클릭!');
+    if (!isResetting) {
+      setIsSubmitted(true);
+      setIsResetting(true);
+      alert('제출하시겠습니까?');
+    } else {
+      // Handle reset logic here
+      setIsSubmitted(false);
+      setIsResetting(false);
+      alert('다시 풀겠습니까?');
+    }
   };
 
   return (
@@ -49,7 +58,7 @@ const Content = ({ data  }) => {
         />
       ))}
       <Button onClick={handleSubmit}>
-      제출하기
+      {isResetting ? '다시 풀기' : '제출하기'}
     </Button>
     </ContentWrapper>
   );

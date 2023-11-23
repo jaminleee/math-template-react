@@ -91,6 +91,9 @@ const ContentItem = ({ index, title, num1, num2, num3, isSubmitted }) => {
               type="text"
               value={textFieldValues[i]}
               onChange={e => handleTextFieldChange(e, i)}
+              isCorrect={isCorrect}
+              isSubmitted={isSubmitted}
+              disabled={isSubmitted}
             />
             {i === 0 && <IdTitle>+</IdTitle>}
           </React.Fragment>
@@ -103,6 +106,9 @@ const ContentItem = ({ index, title, num1, num2, num3, isSubmitted }) => {
           type="text"
           value={textFieldValues[2]}
           onChange={e => handleTextFieldChange(e, 2)}
+          isCorrect={isCorrect}
+          isSubmitted={isSubmitted}
+          disabled={isSubmitted}
         />
       </TextFieldWrapper>
     </ContentItemWrapper>
