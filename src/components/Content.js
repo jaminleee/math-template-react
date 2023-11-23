@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ContentItem from './ContentItem';
 import Button from './ui/Button';
@@ -27,6 +27,14 @@ const ContentWrapper = styled.div`
 `;
 
 const Content = ({ data  }) => {
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+ 
+  const handleSubmit = () => {
+    setIsSubmitted(true);
+    alert('클릭!');
+  };
+
   return (
     <ContentWrapper>
       {data.map((item, index) => (
@@ -34,9 +42,13 @@ const Content = ({ data  }) => {
           key={item.id}
           index={index}
           title={item.title}
+          num1={item.num1}
+          num2={item.num2}
+          num3={item.num3}
+          isSubmitted={isSubmitted}
         />
       ))}
-      <Button onClick={() => alert('click')}>
+      <Button onClick={handleSubmit}>
       제출하기
     </Button>
     </ContentWrapper>

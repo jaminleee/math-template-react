@@ -16,10 +16,10 @@ const ContentItemWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-background-image: url('${img_correct}');
+  background-image: url(${props => props.src});
   background-size: cover;
-  width: 5rem; /* Set the width of the image */
-  height: 4.6rem; /* Set the height of the image */
+  width: 4.6rem; /* Set the width of the image */
+  height: 4.1rem; /* Set the height of the image */
   position: absolute;
   top: 0;
   left: 0;
@@ -55,21 +55,10 @@ const IdNumber = styled(IdTitle)`
   font-size: 1rem;
 `;
 
-const ContentItem = ({ index, title, onInputChange }) => {
+const ContentItem = ({ index, title, num1, num2, num3, isSubmitted }) => {
   const [textFieldValues, setTextFieldValues] = useState(['', '', '']);
+  
 
-  // 텍스트 필드 값이 변경될 때 호출되는 함수
-  const handleInputChange = () => {
-    // 부모 컴포넌트로 입력값 전달
-    onInputChange({
-      index,
-      values: {
-        textField1Value: textFieldValues[0],
-        textField2Value: textFieldValues[1],
-        textField3Value: textFieldValues[2],
-      },
-    });
-  };
 
   // 텍스트 필드 값이 변경될 때 호출되는 함수 (재사용 가능한 부분)
   const handleTextFieldChange = (e, index) => {
@@ -81,12 +70,17 @@ const ContentItem = ({ index, title, onInputChange }) => {
       newValues[index] = value;
       return newValues;
     });
-    handleInputChange();
   };
+
+
+  const isCorrect =
+    parseInt(textFieldValues[0]) === num1 &&
+    parseInt(textFieldValues[1]) === num2 &&
+    parseInt(textFieldValues[2]) === num3;
 
   return (
     <ContentItemWrapper>
-      <ImageWrapper>
+      <ImageWrapper src={isSubmitted ? (isCorrect ? img_correct : img_notCorrect) : ''} alt="Result" >
         <IdNumber>{index + 1}.</IdNumber>
       </ImageWrapper>
       <TextFieldWrapper>
