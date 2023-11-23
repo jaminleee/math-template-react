@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Title from './Title';
 import Description from './Description';
 import Content from './Content';
-import Draggable from 'react-draggable';
 
 const StyledTemplate = styled.div`
   background-color: #FFEBF1;
@@ -18,15 +17,6 @@ const ContentList = styled.div`
   padding-right: 20vw; /* 오른쪽 패딩 */
 `;
 
-const StyledDraggableDiv = styled.div`
-  background-color: skyblue;
-  cursor: grab;
-  padding: 10px;
-  border-radius: 8px;
-  position: absolute;
-  z-index: 999;
-`;
-
 const Template = () => {
   const [state, setState] = useState({
     title: { title: "□에 알맞은 숫자를 써넣으시오." },
@@ -38,12 +28,6 @@ const Template = () => {
       { id: 5, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
     ],
   });
-
-  const handleDrag = (e, data) => {
-    console.log('Drag Coordinates:', { x: data.x, y: data.y });
-  };
-
-
 
   return (
     <StyledTemplate>
