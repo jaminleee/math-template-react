@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Title from './Title';
 import Description from './Description';
 import Content from './Content';
+import { useLocation } from 'react-router-dom'
 
 const StyledTemplate = styled.div`
   background-color: #FFEBF1;
@@ -27,7 +28,17 @@ const Template = () => {
       { id: 4, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
       { id: 5, title: '3 + 3 =', num1: 3, num2: 3, num3: 6 },
     ],
+    extToken: null,
   });
+
+  const location = useLocation();
+  const extTokenFromQuery = new URLSearchParams(location.search).get('extToken');
+
+  useEffect(() => {
+    if (extTokenFromQuery) {
+      setState((prev) => ({ ...prev, extToken: extTokenFromQuery }));
+    }
+  }, [extTokenFromQuery]);
 
   return (
     <StyledTemplate>
