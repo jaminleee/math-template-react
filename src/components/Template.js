@@ -11,10 +11,10 @@ const StyledTemplate = styled.div`
 `;
 
 const ContentList = styled.div`
-  padding-top: 5vh; /* 위쪽 패딩 */
-  padding-bottom: 0vh; /* 아래쪽 패딩 */
-  padding-left: 20vw; /* 왼쪽 패딩 */
-  padding-right: 20vw; /* 오른쪽 패딩 */
+  padding-top: 5vh; 
+  padding-bottom: 0vh; 
+  padding-left: 20vw; 
+  padding-right: 20vw; 
 `;
 
 const Template = () => {
